@@ -64,6 +64,7 @@ const PostForm = () => {
             value={state.message}
             onChange={inputChangeHandler}
             fullWidth
+            required
           />
         </Grid>
         <Grid item xs={6}>

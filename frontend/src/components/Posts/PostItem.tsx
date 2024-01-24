@@ -9,11 +9,6 @@ import {
 } from "@mui/material";
 import { apiURL } from "../../constants";
 
-const ImageCardMedia = styled(CardMedia)({
-  height: 0,
-  paddingTop: "56.25%",
-});
-
 interface Props {
   id: string;
   author: string | null;
@@ -22,19 +17,32 @@ interface Props {
 }
 
 const PostItem: React.FC<Props> = ({ author, message, image }) => {
-    let cardImage;
+  let cardImage;
 
-    if (image) {
-        cardImage = apiURL + "/images/" + image;
-    }
+  if (image) {
+    cardImage = apiURL + "/images/" + image;
+  }
 
   return (
     <Grid item sx={{ mb: 2 }}>
-      <Card>
+      <Card sx={{ height: "100%" }}>
         <CardHeader title={author || "Anonymous"} />
         <CardContent>
           <Typography variant="h4">{message}</Typography>
-          <ImageCardMedia image={cardImage} title={author ? author : "Anonymous"} />
+          {image ? (
+            <CardMedia
+              component="img"
+              sx={{
+                display: "block",
+                width: "100%",
+                height: "auto",
+                maxWidth: "650px",
+                mx: "auto",
+              }}
+              image={cardImage}
+              title={author ? author : "Anonymous"}
+            />
+          ) : null}
         </CardContent>
       </Card>
     </Grid>
