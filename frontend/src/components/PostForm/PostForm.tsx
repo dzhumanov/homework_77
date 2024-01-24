@@ -59,10 +59,10 @@ const PostForm = () => {
             }}
             sx={{
               "& label": {
-                color: "#fff", // Изменить цвет лейбла
+                color: "#fff",
               },
               "& fieldset": {
-                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+                border: "1px solid #2F3336",
               },
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
@@ -86,10 +86,10 @@ const PostForm = () => {
             required
             sx={{
               "& label": {
-                color: "#fff", // Изменить цвет лейбла
+                color: "#fff",
               },
               "& fieldset": {
-                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+                border: "1px solid #2F3336",
               },
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {

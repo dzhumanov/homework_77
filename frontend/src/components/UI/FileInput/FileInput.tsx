@@ -48,10 +48,10 @@ const FileInput: React.FC<Props> = ({onChange, name, label}) => {
             sx={{
               width: "100%",
               "& label": {
-                color: "#fff", // Изменить цвет лейбла
+                color: "#fff",
               },
               "& fieldset": {
-                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+                border: "1px solid #2F3336",
               },
             }}
           />
