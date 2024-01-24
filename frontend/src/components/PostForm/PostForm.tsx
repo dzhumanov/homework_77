@@ -4,8 +4,14 @@ import { PostMutation } from "../../types";
 import FileInput from "../UI/FileInput/FileInput";
 import { LoadingButton } from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Save";
+import { useAppDispatch, useAppSelector } from "../../app/Hooks";
+import { createPost, fetchPosts } from "../../store/posts/postsThunks";
+import { postLoading } from "../../store/posts/postsSlice";
 
 const PostForm = () => {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(postLoading);
+
   const [state, setState] = useState<PostMutation>({
     author: "",
     message: "",
@@ -22,6 +28,7 @@ const PostForm = () => {
 
   const fileInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, files } = e.target;
+    console.log("fileInputChangeHandler", name, files);
     if (files) {
       setState((prevState) => ({
         ...prevState,
@@ -30,8 +37,14 @@ const PostForm = () => {
     }
   };
 
+  const handleSubmit = async (e:React.FormEvent) => {
+    e.preventDefault();
+    await dispatch(createPost(state));
+    await dispatch(fetchPosts);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Grid container direction="column" spacing={2}>
         <Grid item xs={6}>
           <TextField
@@ -65,8 +78,8 @@ const PostForm = () => {
             type="submit"
             color="primary"
             variant="contained"
-            // disabled={isLoading}
-            // loading={isLoading}
+            disabled={isLoading}
+            loading={isLoading}
             loadingPosition="start"
             startIcon={<SaveIcon />}
           >
