@@ -6,19 +6,20 @@ const ImageCardMedia = styled(CardMedia)({
   });
 
 interface Props {
-    author: string;
+    id: string;
+    author: string | null;
     message: string;
     image: string | null;
 }
 
 const PostItem:React.FC<Props> = ({author, message, image}) => {
     return(
-        <Grid item>
+        <Grid item sx={{mb: 2}}>
             <Card>
-                <CardHeader title={author} />
+                <CardHeader title={author || "Anonymous"} />
                 <CardContent>
                     <Typography variant='h4'>{message}</Typography>
-                    {image ? <ImageCardMedia image={image} title={author} /> : null}
+                    {image ? <ImageCardMedia image={image} title={author ? author : "Anonymous"} /> : null}
                 </CardContent>
             </Card>
         </Grid>
