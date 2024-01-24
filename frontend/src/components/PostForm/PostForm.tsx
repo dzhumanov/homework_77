@@ -37,7 +37,7 @@ const PostForm = () => {
     }
   };
 
-  const handleSubmit = async (e:React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await dispatch(createPost(state));
     await dispatch(fetchPosts);
@@ -54,6 +54,22 @@ const PostForm = () => {
             value={state.author}
             onChange={inputChangeHandler}
             fullWidth
+            InputLabelProps={{
+              style: { color: "#fff" },
+            }}
+            sx={{
+              "& label": {
+                color: "#fff", // Изменить цвет лейбла
+              },
+              "& fieldset": {
+                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+              },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
+              },
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -64,10 +80,38 @@ const PostForm = () => {
             value={state.message}
             onChange={inputChangeHandler}
             fullWidth
+            InputLabelProps={{
+              style: { color: "#fff" },
+            }}
             required
+            sx={{
+              "& label": {
+                color: "#fff", // Изменить цвет лейбла
+              },
+              "& fieldset": {
+                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+              },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "white",
+                },
+              },
+            }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid
+          item
+          xs={6}
+          sx={{
+            background: "#fff",
+            pl: "0",
+            pb: "16px",
+            pr: "16px",
+            ml: "16px",
+            mt: "15px",
+            borderRadius: "10px",
+          }}
+        >
           <FileInput
             onChange={fileInputChangeHandler}
             name="image"
@@ -77,12 +121,19 @@ const PostForm = () => {
         <Grid item xs={6}>
           <LoadingButton
             type="submit"
-            color="primary"
             variant="contained"
             disabled={isLoading}
             loading={isLoading}
             loadingPosition="start"
             startIcon={<SaveIcon />}
+            sx={{
+              backgroundColor: "#000",
+              border: "1px solid #2F3336",
+              "&:hover": {
+                backgroundColor: "#fff",
+                color: "#000",
+              },
+            }}
           >
             Post!
           </LoadingButton>

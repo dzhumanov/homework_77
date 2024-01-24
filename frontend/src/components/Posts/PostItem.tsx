@@ -5,7 +5,6 @@ import {
   CardMedia,
   Grid,
   Typography,
-  styled,
 } from "@mui/material";
 import { apiURL } from "../../constants";
 
@@ -25,10 +24,24 @@ const PostItem: React.FC<Props> = ({ author, message, image }) => {
 
   return (
     <Grid item sx={{ mb: 2 }}>
-      <Card sx={{ height: "100%" }}>
-        <CardHeader title={author || "Anonymous"} />
+      <Card
+        sx={{ height: "100%", border: "1px solid #2F3336", background: "#000" }}
+      >
+        <CardHeader
+          title={author || "Anonymous"}
+          sx={{pb:"0"}}
+          titleTypographyProps={{
+            sx: {
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: "35px",
+            },
+          }}
+        />
         <CardContent>
-          <Typography variant="h4">{message}</Typography>
+          <Typography variant="h5" color="#fff" sx={{mb:2}}>
+            {message}
+          </Typography>
           {image ? (
             <CardMedia
               component="img"

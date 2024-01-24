@@ -45,11 +45,21 @@ const FileInput: React.FC<Props> = ({onChange, name, label}) => {
             label={label}
             value={filename}
             onClick={activateInput}
-            sx={{width:"100%"}}
+            sx={{
+              width: "100%",
+              "& label": {
+                color: "#fff", // Изменить цвет лейбла
+              },
+              "& fieldset": {
+                border: "1px solid #2F3336", // Добавить бордер для поля ввода
+              },
+            }}
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" onClick={activateInput}>Browse</Button>
+          <Button variant="contained" sx={{backgroundColor:"#000", "&:hover": {
+            backgroundColor:"#fff", color:"#000"
+          }}}  onClick={activateInput}>Browse</Button>
         </Grid>
       </Grid>
     </>
